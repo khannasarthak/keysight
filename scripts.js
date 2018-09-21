@@ -1,4 +1,6 @@
+// Storing all functions and color coding for better visibility in the UI
 functions = {
+
     add: {
         function(a, b) {
             console.log(a + b);
@@ -30,26 +32,23 @@ functions = {
 
     square: {
         function(a) {
-            console.log(a*a);
+            console.log(a * a);
         },
         color: "#FE91EA"
-    }
-
-
+    },
 }
 
 
-
+// Creating and displaying the draggable Divs
 for (f in functions) {
-    //$('#functionList').append('<div class="col-md-3 function" id="' + f + '">' + f + '</div>');
     var color = functions[f].color;
-    style="background-color:"+color;
-    $('#functionList').append('<a class="btn function draggable" style="'+style+'" id="' + f + '">' + f.toUpperCase() + '</a>');
+    style = "background-color:" + color;
+    $('#functionList').append('<a class="btn function draggable" style="' + style + '" id="' + f + '">' + f.toUpperCase() + '</a>');
 
 }
 
 
-
+// Settings the divs to be draggable
 $('.draggable').draggable({
     revert: true,
     cursorAt: {
@@ -58,142 +57,111 @@ $('.draggable').draggable({
     }
 });
 
+
+// Clear Buttons
 $("#clear").click(function() {
     $('#expressions').empty();
 });
 
 
 
-
+// Function to get widths to split the newly dropped div into
 function getWidth(parameters) {
-
     width = 'calc(85% /' + parameters + ')';
-
-
-    // var a = $('.params').parent().width();
-    // console.log(a)
     return width;
 }
 
-var level = 0;
+
+
+
+// Globals to stop execution after 8 drops. Depth can be changed to any desirable number. Commented out since the requirement was 
+// "recursively indefinitely"
+// var level = 0; 
+// var depth = 8;
+
+
+
+// Recursive function to create new divs recursively to create complex chained expressions.
 
 function getChildren(parentParam) {
+    // Function to create a check of depth. Commented out since requirement was for "recursively indefinitely". 
+    // Can act as the base case to exit recursion if needed.
 
-    if (level > 8) {
-        alert("Hard Coded recursive depth reach, clearing screen");
-        $('#expressions').empty();
-        level = 0;
-        return;
-    }
-    console.log("---LEVEL->" + level);
+    // if (level >= depth) {
+    //     alert("Hard Coded recursive depth reached. Clearing expression area!");
+    //     $('#expressions').empty();
+    //     level = 0;
+    //     return;
+    // }
+
+
     var style;
-    // var childDiv = '<div class="params" style="'+style+'"></div>';
-    // var childDiv = '<div class="params"></div>';
-    // console.log(childDiv);
     var cParam;
-    // console.log("1_"+cParam);
     $('.params').droppable({
-        greedy: true,
+
+        greedy: true, // to prevent parent droppable area to register the drop.
 
         drop: function(event, ui) {
-            level += 1;
-            // console.log("test");
-            var nestedFunctionDropped = ui.draggable.attr("id");
-            // console.log(nestedFunctionDropped);
-            
-            event.stopPropagation();
-            // console.log($(this));
-            // $(this).empty();
-            
-            cParam = functions[nestedFunctionDropped].function.length;
-            // console.log("2_"+cParam)
-            // console.log("Parameters: " + parameters);
-            var borderColor =  functions[nestedFunctionDropped].color;
-            // var border ="border: 1px "+borderColor+ " dotted;"
-            var bg="background-color:"+borderColor+";";
-            // var textColor = "color:"+borderColor
-            var nestedNameDiv = $('<div class="functionName">' + nestedFunctionDropped.toUpperCase() + '</div>');
-            // var style = 'width:' + getWidth(cParam) + ';border: 1px '+borderColor+ ' dotted;'
-            var style = 'width:' + getWidth(cParam) + ';'+ bg;
-            console.log("---LEVEL->" + level + '--' + style);
-            var childDiv = '<div class="params" style="' + style + '"></div>';
-            // console.log()
-            $(this).html(nestedNameDiv);
-            for (var i = 0; i < cParam; i++) {
-                // console.log("in loop")
-                $(this).append(childDiv);
-                // $(this).append()
+            // level += 1;
 
-                getChildren(cParam);
+            var nestedFunctionDropped = ui.draggable.attr("id"); // id of dropped function 
+            event.stopPropagation();
+            cParam = functions[nestedFunctionDropped].function.length; // Getting number of arguments of the dropped function
+
+            // Custom style and background color matching function color.
+            var borderColor = functions[nestedFunctionDropped].color;
+            var bg = "background-color:" + borderColor + ";";
+            var style = 'width:' + getWidth(cParam) + ';' + bg;
+            var childDiv = '<div class="params" style="' + style + '"></div>';
+            var nestedNameDiv = $('<div class="functionName">' + nestedFunctionDropped.toUpperCase() + '</div>');
+
+            $(this).html(nestedNameDiv); // Adding the name of the function dropped in a div to the left.
+
+            // Creating new placeholder areas based on the arguments of the function.
+            for (var i = 0; i < cParam; i++) {
+                $(this).append(childDiv);
+                getChildren(cParam); // Recursive call to function to repeat. Base case only in consideration when depth is specified.
             }
 
         }
-
-        // parameters = functions[func].length
-
-
     });
-    // childWidth = getWidth(cParam);
-    // $('.params').width(childWidth);
 
-    // var childWidth = getWidth(parentParam);
-    //     $('.params').width(childWidth);
-    // console.log("3_"+cParam)
-    // return cParam;
 }
 
-// 
+
+
+// Creating droppable expression area.
 $("#expressions").droppable({
 
     drop: function(event, ui) {
-        // level+=1;
-        $('#expressions').html('');
+        
+        $('#expressions').empty(); // Clearing expression area when new function dropped.
+
         id = event.target.id;
-
-        var functionDropped = ui.draggable.attr("id");
-
-        // console.log("DROOPPED! " + functionDropped);
+        var functionDropped = ui.draggable.attr("id");        
+        var childParam;        
         
-        // var childDiv = '<div class="params"></div>';
-        // var nchildDiv = $('<div class="params"></div>');
-        var childParam;
-        // console.log("4_"+childParam)
-
-
-        $
-        // console.log(functions[draggableId](5,7));
         parameters = functions[functionDropped].function.length
+
+        var borderColor = functions[functionDropped].color;
+        var border = "border: 1px " + borderColor + " dotted;"            
+        var bg = "background-color:" + borderColor + ";";       
+        var style = 'width:' + getWidth(parameters) + ';' + bg;
+
         
-        var borderColor =  functions[functionDropped].color;
-        var border ="border: 1px "+borderColor+ " dotted;"
-        // var textColor = "color:"+borderColor
-        // console.log(border);
-        var bg="background-color:"+borderColor+";";
         var nameDiv = $('<div class="functionName">' + functionDropped.toUpperCase() + '</div>');
-        // console.log(nameDiv)
-        // var style = 'width:' + getWidth(parameters) + ';border: 1px '+borderColor+ ' dotted;'
-        var style = 'width:' + getWidth(parameters) + ';'+ bg;
-
-        console.log(style);
         var childDiv = '<div class="params" style="' + style + '"></div>';
-        $('#expressions').prepend(nameDiv);
-        // console.log("Parameters: " + parameters);
-        for (var i = 0; i < parameters; i++) {
-            // $('#expressions').append('<div class="params" style="min-width=' + 100 / parameters + '%"></div>');
 
+        $('#expressions').prepend(nameDiv); // Adding the name of the function dropped in a div to the left.
+        
+        // Creating new placeholder areas based on the arguments of the function.
+        for (var i = 0; i < parameters; i++) {
+            
             $('#expressions').append(childDiv);
             getChildren(parameters);
-            // console.log(console.log("5_"+childParam));
-
-
-
-
-
+           
         }
-        // console.log(childParam);
-        // childWidth = getWidth(parameters);
-        // $('.params').width(childWidth);
-
+       
     }
 
 });

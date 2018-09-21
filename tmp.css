@@ -1,8 +1,8 @@
 
-body, html, .container-fluid {
-         height: 100%;
-         width: 100%;
-    }
+body, html,.container-fluid {
+    height: 100%;
+    width: 100%;
+}
 
 #contents {
     padding: 0;
@@ -11,6 +11,7 @@ body, html, .container-fluid {
     
 }
 
+/* Expression Area */
 #expressions {
     height: 60%; 
     display: block;
@@ -24,66 +25,53 @@ body, html, .container-fluid {
     
 }
 
+/* Draggable function list */
 #functionList {
-    height: 20%;
+    height: 15%;
     background-color: #F7F7F7;
     margin: 0.5% auto;
     border: 1px black solid;
     border-radius: 10px;
 }
 
-
+/* Function Div */
 .function {
     float: left;
-    /*display: inline-block;*/
     width: 19%;
     text-align: center;
     margin:auto auto;
     height: 30%;
-
     border-radius: 10px;
 }
 
 
-
-/*div:empty {
-    width: 100px;
-    background-color: red;
-}*/
+/* Newly Created placeholder div after dropping */
 .params {
     border: 0.5px black solid;
     border-color: rgba(0,0,0,0.25);
-    height: 98%;
-    /*clear: both;*/
-    /*float: left;*/
-    display: inline-block;
-    
-    padding: 1% 0;
-    /*background-color: gray;*/
+    height: 98%;    
+    display: inline-block;    
+    padding: 1% 0;    
     margin:0;
-    border-radius: 10px;
-   
+    border-radius: 10px;  
 
 }
 
 
-
-.functionName{
-    /*border: 1px black dashed;*/
-    height: 98%;
-    /*clear: both;*/
-    /*float: left;*/
-   text-align: center;
+/* Each draggable function div */
+.functionName{    
+    height: 98%;    
+    text-align: center;
     display: inline-block;
-    margin:0;
-    
+    margin:0;    
     width: 10%;
-    z-index: 1000;
-    
-
-    
+       
 }
 
 #clear {
     margin: 1% auto ;
+}
+
+.details li{
+  display: inline;
 }
