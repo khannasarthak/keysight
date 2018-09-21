@@ -133,6 +133,7 @@ function getChildren(parentParam) {
 // Creating droppable expression area.
 $("#expressions").droppable({
 
+    // Dropping first function into the expression area. 
     drop: function(event, ui) {
         
         $('#expressions').empty(); // Clearing expression area when new function dropped.

@@ -34,7 +34,7 @@ body, html,.container-fluid {
     border-radius: 10px;
 }
 
-/* Function Div */
+/* Each draggable and droppable  function div */
 .function {
     float: left;
     width: 19%;
@@ -42,12 +42,13 @@ body, html,.container-fluid {
     margin:auto auto;
     height: 30%;
     border-radius: 10px;
+    
 }
 
 
 /* Newly Created placeholder div after dropping */
 .params {
-    border: 0.5px black solid;
+    border: 1px black solid;
     border-color: rgba(0,0,0,0.25);
     height: 98%;    
     display: inline-block;    
@@ -58,13 +59,14 @@ body, html,.container-fluid {
 }
 
 
-/* Each draggable function div */
+/* Initial dropped function. One that is dropped the first time on the expression area */
 .functionName{    
     height: 98%;    
     text-align: center;
     display: inline-block;
     margin:0;    
     width: 10%;
+    
        
 }
 
