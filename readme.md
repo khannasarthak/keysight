@@ -12,7 +12,7 @@ Creating a UI with drag and drop features to create expressions.
 ### Basic Functionality
 - The user can drag and drop one of the functons into the expression area. This will create placeholder divs (based on the number of arguments of the function dropped). 
 - After initial function is dropped. User can either clear the expression area or drop the function in the white areas of the expression area to replace the first function dropped
-- To create nested or recursive functions, drop the function into the color area of the expression area which is visible after the initial drop of any function. 
+- To create nested or recursive expressions, drop the function into the colored area of the expression area which is visible after the initial drop of any function. 
 
 ### Assumptions
 - Dropping will create new placeholder Divs.
