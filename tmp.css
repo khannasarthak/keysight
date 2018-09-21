@@ -16,30 +16,32 @@ body, html, .container-fluid {
     display: block;
     background-color: white;
     border: 1px black dotted;
-    margin: 1%;
+    margin: 0;
     display: flex;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding: 0.5% 0.5%;
     width: 100%;
+    border-radius: 10px;
     
 }
 
 #functionList {
     height: 20%;
-    background-color: #DDDDDD;
-    margin: 1%;
-
+    background-color: #F7F7F7;
+    margin: 0.5% auto;
+    border: 1px black solid;
+    border-radius: 10px;
 }
 
 
 .function {
     float: left;
-    display: inline-block;
+    /*display: inline-block;*/
     width: 19%;
     text-align: center;
     margin:auto auto;
     height: 30%;
 
+    border-radius: 10px;
 }
 
 
@@ -49,21 +51,22 @@ body, html, .container-fluid {
     background-color: red;
 }*/
 .params {
-    /*border: 1px black dashed;*/
+    border: 0.5px black solid;
+    border-color: rgba(0,0,0,0.25);
     height: 98%;
     /*clear: both;*/
     /*float: left;*/
+    display: inline-block;
     
-       
-    background-color: gray;
+    padding: 1% 0;
+    /*background-color: gray;*/
     margin:0;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#919191+1,dbdbdb+51,a5a5a5+100 */
-background: rgb(145,145,145); /* Old browsers */
-background: -moz-linear-gradient(left, rgba(145,145,145,1) 1%, rgba(219,219,219,1) 51%, rgba(165,165,165,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, rgba(145,145,145,1) 1%,rgba(219,219,219,1) 51%,rgba(165,165,165,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, rgba(145,145,145,1) 1%,rgba(219,219,219,1) 51%,rgba(165,165,165,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#919191', endColorstr='#a5a5a5',GradientType=1 ); /* IE6-9 */ś
+    border-radius: 10px;
+   
+
 }
+
+
 
 .functionName{
     /*border: 1px black dashed;*/
@@ -71,9 +74,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#919191', end
     /*clear: both;*/
     /*float: left;*/
    text-align: center;
-    width: 5%;
+    display: inline-block;
     margin:0;
+    
+    width: 10%;
+    z-index: 1000;
     
 
     
+}
+
+#clear {
+    margin: 1% auto ;
 }
