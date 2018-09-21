@@ -20,7 +20,7 @@ Creating a UI with drag and drop features to create expressions.
 
 ### Screenshots:
 1. Basic UI
-![Basic UI](Screenshots/1.png)
+![Basic UI](1.PNG)
 
 2. UI with functions dropped
-![Dropped Functions](Screenshots/2.png)
+![Dropped Functions](2.PNG)
