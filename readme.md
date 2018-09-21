@@ -12,6 +12,13 @@ Creating a UI with drag and drop features to create expressions.
 ### Assumptions
 - Dropping will create new placeholder Divs.
 - Functions are available on page load and do not change dynamically.
+- Currently only 5 functions with multiple number of arguments:
+    - ADD - 2 arguments
+    - SUBTRACT - 3 arguments
+    - MULTIPLY - 4 arguments
+    - NEGATE - 1 argument
+    - SQUARE - 1 argument
+- More functions can be added or the present ones can be replaced. 
 
 ### Additional Features
 - **Clear Screen** : clears the expression area

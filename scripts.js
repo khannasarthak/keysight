@@ -138,18 +138,18 @@ $("#expressions").droppable({
         
         $('#expressions').empty(); // Clearing expression area when new function dropped.
 
-        id = event.target.id;
-        var functionDropped = ui.draggable.attr("id");        
-        var childParam;        
         
-        parameters = functions[functionDropped].function.length
+        var functionDropped = ui.draggable.attr("id");    // get ID of dropped funciton
+                
+        parameters = functions[functionDropped].function.length // NUmber of arguments of function dropped
 
+        // Styling so that placeholder divs match color of the functions
         var borderColor = functions[functionDropped].color;
         var border = "border: 1px " + borderColor + " dotted;"            
         var bg = "background-color:" + borderColor + ";";       
         var style = 'width:' + getWidth(parameters) + ';' + bg;
 
-        
+        // Adding the placeholder Divs
         var nameDiv = $('<div class="functionName">' + functionDropped.toUpperCase() + '</div>');
         var childDiv = '<div class="params" style="' + style + '"></div>';
 
